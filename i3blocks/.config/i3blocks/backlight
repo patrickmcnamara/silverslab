@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case $BLOCK_BUTTON in
+  3) if [ ! -e /tmp/ct ]; then
+       sct 4000
+       touch /tmp/ct
+     else
+       sct
+       rm /tmp/ct
+     fi ;;
+  4) xbacklight -inc 5 ;;
+  5) xbacklight -dec 5 ;;
+esac
+
+xbacklight | awk '{ printf "%d%%\n", int($1+0.5) }'

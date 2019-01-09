@@ -1,0 +1,17 @@
+#!/bin/bash
+
+TOGGLE=/tmp/time
+
+if [ "$BLOCK_BUTTON" -eq 3 ]; then
+  if [ ! -e $TOGGLE ]; then
+    touch $TOGGLE
+  else
+    rm $TOGGLE
+  fi
+fi
+
+if [ ! -e $TOGGLE ]; then
+  date "+%Y-%m-%d %H:%M:%S %:z"
+else
+  printf "$(date "+%Y-%m-%d") $(chronos)\n"
+fi

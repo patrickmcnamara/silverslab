@@ -1,0 +1,120 @@
+### font stuff
+font pango:monospace 10
+
+### gaps and border stuff
+gaps inner 25
+gaps outer 25
+
+##### other options
+default_border pixel 10
+default_floating_border pixel 10
+workspace_auto_back_and_forth yes
+focus_follows_mouse no
+focus_wrapping no
+bindsym --border button1 nop
+
+### set modifier keys
+set $mod Mod1
+set $sup Mod4
+### set floating window modifier
+floating_modifier $mod
+### set direction keys
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+### set programs
+set $terminal alacritty
+set $browser google-chrome-stable
+set $browser-private google-chrome-stable -incognito
+set $totp_authenticator janus
+set $program_launcher j4-dmenu-desktop
+set $emoji_keyboard emojiboard
+### start programs
+bindsym $mod+Return exec $terminal
+bindsym $mod+a exec $browser
+bindsym $mod+s exec $browser-private
+bindsym $mod+d exec $totp_authenticator
+bindsym $mod+f exec $program_launcher
+bindsym $mod+e exec $emoji_keyboard
+
+### change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+u focus parent
+bindsym $mod+i focus child
+bindsym $mod+o focus tiling
+bindsym $mod+p focus floating
+### move focused window
+bindsym $mod+$sup+$left move left
+bindsym $mod+$sup+$down move down
+bindsym $mod+$sup+$up move up
+bindsym $mod+$sup+$right move right
+### split current container (split horizontally, split vertically)
+bindsym $mod+$sup+u split toggle
+### change current container layout (split horizontally, split vertically)
+bindsym $mod+$sup+o layout splith
+bindsym $mod+$sup+p layout splitv
+### toggle fullscreen mode for the focused container
+bindsym $mod+space fullscreen toggle
+### kill window, reload config, restart i3, exit i3
+bindsym $mod+$sup+q kill
+bindsym $mod+$sup+w reload
+bindsym $mod+$sup+e restart
+bindsym $mod+$sup+r exit
+
+### set and name workspaces, one through ten
+set $ws01 "01     "
+set $ws02 "02     "
+set $ws03 "03     "
+set $ws04 "04     "
+set $ws05 "05     "
+set $ws06 "06     "
+set $ws07 "07     "
+set $ws08 "08     "
+set $ws09 "09     "
+set $ws10 "10     "
+### switch to specific workspace
+bindsym $mod+1 workspace $ws01
+bindsym $mod+2 workspace $ws02
+bindsym $mod+3 workspace $ws03
+bindsym $mod+4 workspace $ws04
+bindsym $mod+5 workspace $ws05
+bindsym $mod+6 workspace $ws06
+bindsym $mod+7 workspace $ws07
+bindsym $mod+8 workspace $ws08
+bindsym $mod+9 workspace $ws09
+bindsym $mod+0 workspace $ws10
+### move focused container to workspace
+bindsym $mod+$sup+1 move container to workspace $ws01
+bindsym $mod+$sup+2 move container to workspace $ws02
+bindsym $mod+$sup+3 move container to workspace $ws03
+bindsym $mod+$sup+4 move container to workspace $ws04
+bindsym $mod+$sup+5 move container to workspace $ws05
+bindsym $mod+$sup+6 move container to workspace $ws06
+bindsym $mod+$sup+7 move container to workspace $ws07
+bindsym $mod+$sup+8 move container to workspace $ws08
+bindsym $mod+$sup+9 move container to workspace $ws09
+bindsym $mod+$sup+0 move container to workspace $ws10
+
+### i3bar stuff
+bar {
+        status_command i3blocks
+        separator_symbol "//"
+}
+
+### volume controls
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+2 i3blocks
+
+## screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && pkill -RTMIN+2 i3blocks
+
+## keyboard brightness controls
+bindsym XF86KbdBrightnessUp exec asus-kbd-backlight up && pkill -RTMIN+3 i3blocks
+bindsym XF86KbdBrightnessDown exec asus-kbd-backlight down && pkill -RTMIN+3 i3blocks
