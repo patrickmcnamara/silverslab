@@ -2,13 +2,13 @@
 font pango:monospace 10
 
 ### gaps and border stuff
-gaps inner 25
-gaps outer 25
+gaps inner 16
+gaps outer 16
 
 ##### other options
 default_border pixel 10
 default_floating_border pixel 10
-workspace_auto_back_and_forth yes
+#workspace_auto_back_and_forth yes
 focus_follows_mouse no
 focus_wrapping no
 bindsym --border button1 nop

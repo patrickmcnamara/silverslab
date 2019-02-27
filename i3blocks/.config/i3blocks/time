@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
+# SET TOGGLE FILE
 TOGGLE=/tmp/time
 
 if [ "$BLOCK_BUTTON" -eq 3 ]; then
@@ -10,8 +11,9 @@ if [ "$BLOCK_BUTTON" -eq 3 ]; then
   fi
 fi
 
+# PRINT OUT
 if [ ! -e $TOGGLE ]; then
   date "+%Y-%m-%d %H:%M:%S %:z"
 else
-  printf "$(date "+%Y-%m-%d") $(chronos)\n"
+  echo "$(date "+%Y-%m-%d") $(chronos)"
 fi

@@ -2,22 +2,22 @@
 
 BRIGHTNESS=/sys/class/leds/asus::kbd_backlight/brightness
 
-if [ ! -e $BRIGHTNESS ]; then
+if [ ! -e "$BRIGHTNESS" ]; then
   BRIGHTNESS=/sys/devices/platform/asus-nb-wmi/leds/asus::kbd_backlight/backlight
 fi
 
 case $BLOCK_BUTTON in
-  3) if [ ! $(cat $BRIGHTNESS) -eq 3 ]; then
-       echo $(($(cat $BRIGHTNESS)+1)) > $BRIGHTNESS
+  3) if [ ! $(cat "$BRIGHTNESS") -eq 3 ]; then
+       echo $(($(cat "$BRIGHTNESS")+1)) > "$BRIGHTNESS"
      else
-       echo 0 > $BRIGHTNESS
+       echo "0" > "$BRIGHTNESS"
      fi ;;
-  4) if [ ! $(cat $BRIGHTNESS) -eq 3 ]; then
-       echo $(($(cat $BRIGHTNESS)+1)) > $BRIGHTNESS
+  4) if [ ! $(cat "$BRIGHTNESS") -eq 3 ]; then
+       echo $(($(cat "$BRIGHTNESS")+1)) > "$BRIGHTNESS"
      fi ;;
-  5) if [ ! $(cat $BRIGHTNESS) -eq 0 ]; then
-       echo $(($(cat $BRIGHTNESS)-1)) > $BRIGHTNESS
+  5) if [ ! $(cat "$BRIGHTNESS") -eq 0 ]; then
+       echo $(($(cat "$BRIGHTNESS")-1)) > "$BRIGHTNESS"
      fi ;;
 esac
 
-cat $BRIGHTNESS
+cat "$BRIGHTNESS"
