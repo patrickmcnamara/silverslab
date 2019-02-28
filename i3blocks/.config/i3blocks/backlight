@@ -26,5 +26,6 @@ BRIGHTNESS=$(xbacklight | awk '{ printf "%d%%\n", int($1+0.5) }')
 echo "$BRIGHTNESS"
 echo "$BRIGHTNESS"
 if [ -e "$TOGGLE" ]; then
-    echo "#FFFF00"
+    echo "#00FFFF"
 fi
+
