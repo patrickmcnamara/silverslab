@@ -2,13 +2,13 @@
 font pango:monospace 10
 
 ### gaps and border stuff
-gaps inner 16
-gaps outer 16
+gaps inner 8
+gaps outer 8
 
 ##### other options
-default_border pixel 10
-default_floating_border pixel 10
-#workspace_auto_back_and_forth yes
+default_border pixel 4
+default_floating_border pixel 4
+workspace_auto_back_and_forth yes
 focus_follows_mouse no
 focus_wrapping no
 bindsym --border button1 nop
@@ -26,8 +26,8 @@ set $right semicolon
 
 ### set programs
 set $terminal alacritty
-set $browser google-chrome-stable
-set $browser-private google-chrome-stable -incognito
+set $browser chromium
+set $browser-private chromium -incognito
 set $totp_authenticator janus
 set $program_launcher j4-dmenu-desktop
 set $emoji_keyboard emojiboard
@@ -58,8 +58,9 @@ bindsym $mod+$sup+u split toggle
 ### change current container layout (split horizontally, split vertically)
 bindsym $mod+$sup+o layout splith
 bindsym $mod+$sup+p layout splitv
-### toggle fullscreen mode for the focused container
+### change current container mode (fullscreen, floating)
 bindsym $mod+space fullscreen toggle
+bindsym $mod+$sup+f floating toggle
 ### kill window, reload config, restart i3, exit i3
 bindsym $mod+$sup+q kill
 bindsym $mod+$sup+w reload
@@ -102,6 +103,7 @@ bindsym $mod+$sup+0 move container to workspace $ws10
 
 ### i3bar stuff
 bar {
+        position top
         status_command i3blocks
         separator_symbol "//"
 }
@@ -111,10 +113,13 @@ bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+2 i3blocks
 
-## screen brightness controls
+### screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && pkill -RTMIN+2 i3blocks
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && pkill -RTMIN+2 i3blocks
 
-## keyboard brightness controls
+### keyboard brightness controls
 bindsym XF86KbdBrightnessUp exec asus-kbd-backlight up && pkill -RTMIN+3 i3blocks
 bindsym XF86KbdBrightnessDown exec asus-kbd-backlight down && pkill -RTMIN+3 i3blocks
+
+### start compton
+exec compton

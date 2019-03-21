@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
-~/.wallpaper.py
+xrdb -merge ~/.Xresources
+xsetroot -grey
 
 udiskie --no-notify --quiet &
 autocutsel -selection PRIMARY -fork &
