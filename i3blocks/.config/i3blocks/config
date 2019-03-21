@@ -15,7 +15,6 @@ interval=10
 interval=10
 
 [iface]
-color=#00FF00
 interval=10
 
 [bandwidth]

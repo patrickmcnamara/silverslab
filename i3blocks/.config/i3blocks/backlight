@@ -5,20 +5,20 @@ TOGGLE="/tmp/nl"
 
 # BUTTONS
 case "$BLOCK_BUTTON" in
-    3) if [ ! -e "$TOGGLE" ]; then
-             touch "$TOGGLE"
-         else
-             rm "$TOGGLE"
-         fi ;;
-    4) xbacklight -inc 5 ;;
-    5) xbacklight -dec 5 ;;
+  3)  if [ ! -e "$TOGGLE" ]; then
+        touch "$TOGGLE"
+      else
+        rm "$TOGGLE"
+      fi ;;
+  4)  xbacklight -inc 5 ;;
+  5)  xbacklight -dec 5 ;;
 esac
 
-# TURN ON OR OFF NIGHTLIGHT
+# TOGGLE NIGHTLIGHT
 if [ ! -e "$TOGGLE" ]; then
-    sct
+  sct
 else
-    sct 4000
+  sct 4000
 fi
 
 # PRINT OUT
@@ -26,6 +26,5 @@ BRIGHTNESS=$(xbacklight | awk '{ printf "%d%%\n", int($1+0.5) }')
 echo "$BRIGHTNESS"
 echo "$BRIGHTNESS"
 if [ -e "$TOGGLE" ]; then
-    echo "#00FFFF"
+  echo "#00FFFF"
 fi
-
