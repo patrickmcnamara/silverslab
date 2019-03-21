@@ -22,7 +22,7 @@ scrolling:
 
   auto_scroll: false
 
-tabspaces: 4
+tabspaces: 8
 
 font:
   normal:
@@ -89,7 +89,7 @@ visual_bell:
   animation: EaseOutExpo
   duration: 0
 
-background_opacity: 0.75
+background_opacity: 1
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
