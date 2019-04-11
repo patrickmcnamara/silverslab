@@ -40,5 +40,5 @@ interval=10
 
 [time]
 command=$HOME/.config/i3blocks/$BLOCK_NAME
-interval=1
+interval=10
 separator_block_width=15
